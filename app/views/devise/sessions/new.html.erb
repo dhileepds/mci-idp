@@ -1,0 +1,61 @@
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div>
+        <div>
+          <%= image_tag "l3.jpg"%>
+        </div>
+        <br>
+        <h3>Welcome to KSA</h3>
+        <p>
+            Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
+        </p>
+        <p>Login in. To see it in action.</p>
+        <div class="row">
+          <div class="col-md-12">
+            <% if notice %>
+                <div class="alert alert-success alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                <%= notice %>
+                </div>
+            <% end %>
+            <% if alert %>
+                <div class="alert alert-danger alert-dismissable">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                <%= alert %>.
+                </div> 
+            <% end %>            
+          </div>          
+        </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|  %>
+          <div class="form-group">
+            <%= f.email_field :email,class:'form-control', autofocus: true, placeholder:"Email" ,required:"required"%>
+          </div>
+
+          <div class="form-group">
+            <%= f.password_field :password,class:'form-control', autocomplete: "off",placeholder:"Password" ,required:"required"%>
+          </div>
+          <div class="pull-right">
+            <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+              <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+            <% end -%>
+          </div>
+          <% if devise_mapping.rememberable? -%>
+            <div class="form-group pull-left">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end -%>
+
+          <div class="actions">
+            <%= f.submit "Log in",class:"btn btn-primary block full-width m-b"%>
+          </div>
+        <% end %>
+        <p class="text-muted text-center"><small>Do not have an account?</small></p>
+
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+           <a class="btn btn-sm btn-white btn-block" href="<%= url_for :controller => 'registrations', :action => 'new' %>">Create an account</a>
+        <% end -%>
+        <br>
+        <%= render "devise/shared/links" %>
+
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div>
+        <div>
+          <%= image_tag "l3.jpg"%>
+        </div>
+        <br>
+        <h3>Welcome to KSA</h3>
+        <p>
+            Please Register to Access this site
+        </p>
+        <h2 class="hide">Sign Up</h2><br>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        
+        <%= devise_error_messages! %>
+           <div class="form-group">
+              <%= f.text_field  :name,class:'form-control', autofocus: true,placeholder:'Name',required:"required"%>
+            </div>
+
+           <div class="form-group">
+              <%= f.email_field :email,class:'form-control',placeholder:'Email',required:"required"%>
+            </div>
+
+            <div class="form-group">
+              <% if @validatable %>
+              
+              <%= f.password_field :password,class:'form-control', autocomplete: "off", placeholder:'Password 8 characters minimum',required:"required"%>
+              <% end %>
+            </div>
+
+            <div class="form-group">
+              <%= f.password_field :password_confirmation,class:'form-control', autocomplete: "off" ,placeholder:'Confirm Password',required:"required"%>
+            </div>
+            
+            <div class="form-group">
+              <%= f.text_field :Organization_name,class:'form-control', placeholder:'Organization Name',required:"required"%>
+            </div>
+
+            <div class="form-group">
+              <%= f.text_field :Organization_ID,class:'form-control', placeholder:'Organization ID',required:"required"%>
+            </div>
+            
+            <div class="form-group">
+              <%= f.text_field :Individual_ID,class:'form-control', placeholder:'Individual ID',required:"required"%>
+            </div>
+
+            <div class="form-group">
+              <%= f.text_field :designation,class:'form-control', placeholder:'Designation',required:"required"%>
+            </div>
+
+            <div class="form-group">
+              <%= f.text_field :level,class:'form-control', placeholder:'Level',required:"required"%>
+            </div>
+
+            <div class="form-group">
+              <%= f.text_field :role,class:'form-control', placeholder:'Role',required:"required"%>
+            </div>
+
+          <div class="actions">
+            <%= f.submit "Sign up",class:"btn btn-primary block full-width m-b"%>
+          </div>
+        <% end %>
+        <p class="text-muted text-center"><small>Do not have an account?</small></p>
+        <%- if controller_name != 'sessions' %>
+          <a class="btn btn-sm btn-white btn-block" href="<%= url_for :controller => 'sessions', :action => 'new' %>">Login</a>
+        <% end -%>
+        <br>
+      <%= render "devise/shared/links" %>
+
+  </div>
+</div>
