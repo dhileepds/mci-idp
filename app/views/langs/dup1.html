@@ -1,0 +1,531 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <img alt="image" class="img-responsive" src="<%= image_url 'headerlogo.jpg' %> " height="50px" />
+        <!--  <div class="col-lg-6">
+        <img alt="image" src="<%= image_url 'l3.jpg' %>" style="margin-left:-15px;" />
+        </div>
+        <div class="col-lg-2">
+        <img alt="image" src="<%= image_url 'l2.jpg' %>" style="align:center;"/>
+        </div>
+        <div class="col-lg-4">
+            <img alt="image" src="<%= image_url 'l1.jpg' %>" style="margin-top:15px;margin-left:220px;" />
+        </div>  -->
+     
+        <div class="clearfix"></div>
+         <ol class="breadcrumb">
+            
+        <li class="active">
+
+            <strong>MORE INFORMATION</strong>
+
+        </li>
+    </ol>
+        
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+<div class="row">
+      <div class="col-lg-12">
+        <div class="">
+            <!-- <div class="ibox-title">
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="fullscreen-link">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div> -->
+            <div class="">
+              <div class="row"> 
+                <div class="col-lg-12">
+                   <div class="panel panel-info">
+                        <div class="panel-heading">
+                          Factory Details
+                      </div>
+                      <div class="panel-body">
+                            <div class="row">
+                              <div class="col-lg-6">
+                                <table class="table borderless">
+                                 <%= form_tag(update_lang_path,:method => "post", class: "navbar-form") do %>
+                                  <% @fname.each do |a|%> 
+                                    <tr>
+                                        <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                        <td><%= text_field_tag :fname, params[:fname], class: "form-control", value: a.Value %><%= text_field_tag :fseq, params[:fseq], class: "form-control hide", value: a.Seq %><%= text_field_tag :Factory_ID, params[:Factory_ID], class: "form-control hide", value: @data %></td>
+                                    </tr>
+                                  <% end %> 
+                                </table>
+                              </div>
+                               <div class="col-lg-6">
+                                <table class="table borderless">
+                                    <% @fweb.each do |a|%>
+                                      <tr>
+                                          <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                          <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                      </tr>
+                                    <% end %> 
+                                </table>
+                             </div>
+                             <div class="col-lg-12">
+                               <%= submit_tag "Update", :class=>"btn btn btn-primary pull-right",:name=>nil %> 
+                             </div>
+                            <% end %>
+                          </div>       
+                      </div>
+                    </div>
+                </div>
+                 <div class="col-lg-8">
+                   <div class="panel panel-warning">
+                        <div class="panel-heading">
+                          Address
+                      </div>
+                      <div class="panel-body">
+                            <div class="row">
+                              <div class="col-lg-6">
+                                  <table class="table borderless">
+                                    <div class="row">
+                                      <% @fpaddress.each do |a|%>  
+                                        <tr> 
+                                            <div class="col-lg-6">
+                                              <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                            </div>
+                                            <div class="col-lg-6">
+                                              <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                            </div>
+                                        </tr>
+                                      <% end %>
+                                      <% @fdistrict.each do |a|%>  
+                                        <tr> 
+                                            <div class="col-lg-6">
+                                              <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                            </div>
+                                            <div class="col-lg-6">
+                                              <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                            </div>
+                                        </tr>
+                                      <% end %>
+                                      <% @fpob.each do |a|%>  
+                                        <tr> 
+                                            <div class="col-lg-6">
+                                              <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                            </div>
+                                            <div class="col-lg-6">
+                                              <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                            </div>
+                                        </tr>
+                                      <% end %>
+                                      <% @fpob_pc.each do |a|%>  
+                                        <tr> 
+                                            <div class="col-lg-6">
+                                              <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                            </div>
+                                            <div class="col-lg-6">
+                                              <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                            </div>
+                                        </tr>
+                                      <% end %>
+                                      <% @fphone.each do |a|%>  
+                                        <tr> 
+                                            <div class="col-lg-6">
+                                              <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                            </div>
+                                            <div class="col-lg-6">
+                                              <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                            </div>
+                                        </tr>
+                                      <% end %>
+                                      <% @flicense.each do |a|%>  
+                                        <tr> 
+                                            <div class="col-lg-6">
+                                              <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                            </div>
+                                            <div class="col-lg-6">
+                                              <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                            </div>
+                                        </tr>
+                                      <% end %>
+                                      <% @fblockno.each do |a|%>  
+                                        <tr> 
+                                            <div class="col-lg-6">
+                                              <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                            </div>
+                                            <div class="col-lg-6">
+                                              <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                            </div>
+                                        </tr>
+                                      <% end %>
+                                      <% @ftype.each do |a|%>  
+                                        <tr> 
+                                            <div class="col-lg-6">
+                                              <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                            </div>
+                                            <div class="col-lg-6">
+                                              <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                            </div>
+                                        </tr>
+                                      <% end %>
+                                    </div>
+                                  </table>
+                              </div>
+                               <div class="col-lg-6">
+                                  <table class="table borderless">
+                                    <div class="row">
+                                      <% @fcity.each do |a|%>  
+                                        <tr> 
+                                            <div class="col-lg-6">
+                                              <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                            </div>
+                                            <div class="col-lg-6">
+                                              <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                            </div>
+                                        </tr>
+                                      <% end %>
+                                      <% @fpostal_Code.each do |a|%>  
+                                        <tr> 
+                                            <div class="col-lg-6">
+                                              <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                            </div>
+                                            <div class="col-lg-6">
+                                              <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                            </div>
+                                        </tr>
+                                      <% end %>
+                                      <% @fpob_city.each do |a|%>  
+                                        <tr> 
+                                            <div class="col-lg-6">
+                                              <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                            </div>
+                                            <div class="col-lg-6">
+                                              <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                            </div>
+                                        </tr>
+                                      <% end %>
+                                      <% @fstate.each do |a|%>  
+                                        <tr> 
+                                            <div class="col-lg-6">
+                                              <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                            </div>
+                                            <div class="col-lg-6">
+                                              <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                            </div>
+                                        </tr>
+                                      <% end %>
+                                      <% @fmobile.each do |a|%>  
+                                        <tr> 
+                                            <div class="col-lg-6">
+                                              <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                            </div>
+                                            <div class="col-lg-6">
+                                              <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                            </div>
+                                        </tr>
+                                      <% end %>
+                                      <% @fgps.each do |a|%>  
+                                        <tr> 
+                                            <div class="col-lg-6">
+                                              <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                            </div>
+                                            <div class="col-lg-6">
+                                              <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                            </div>
+                                        </tr>
+                                      <% end %>
+                                      <% @fnoemp.each do |a|%>  
+                                        <tr> 
+                                            <div class="col-lg-6">
+                                              <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                            </div>
+                                            <div class="col-lg-6">
+                                              <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                            </div>
+                                        </tr>
+                                      <% end %>
+                                    </div>
+                                  </table>
+                              </div>
+                           </div>       
+                      </div>
+                    </div>
+                   <div class="panel panel-danger">
+                      <div class="panel-heading">
+                        Manufecturing Deatils
+                    </div>
+                    <div class="panel-body">
+                      <div class="col-lg-12">
+                        <div class="col-lg-6">
+                        <table class="table borderless">
+                          <% @fmfg_isic.each do |a|%>  
+                          <tr> 
+                              <div class="col-lg-4">
+                                <td style="font-size:16px;"><b><%= a.property%></b></td>
+                              </div>
+                              <div class="col-lg-8">
+                                <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                              </div>
+                          </tr>
+                        <% end %>
+                          <% @fmfg_capacity.each do |a|%>  
+                          <tr> 
+                              <div class="col-lg-4">
+                                <td style="font-size:16px;"><b><%= a.property%></b></td>
+                              </div>
+                              <div class="col-lg-8">
+                                <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                              </div>
+                          </tr>
+                        <% end %>
+                        </table>
+                        </div>
+                        <div class="col-lg-6">
+                          <table class="table borderless">
+                          <% @fmfg_uom.each do |a|%>  
+                          <tr> 
+                              <div class="col-lg-4">
+                                <td style="font-size:16px;"><b><%= a.property%></b></td>
+                              </div>
+                              <div class="col-lg-8">
+                                <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                              </div>
+                          </tr>
+                        <% end %>
+                          <% @fmfg_period.each do |a|%>  
+                          <tr> 
+                              <div class="col-lg-4">
+                                <td style="font-size:16px;"><b><%= a.property%></b></td>
+                              </div>
+                              <div class="col-lg-8">
+                                <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                              </div>
+                          </tr>
+                        <% end %>
+                        </table>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                <div class="ibox collapsed">
+                    <div class="ibox-title">
+                        <h5>Responsible Party</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                      <table class="table borderless">
+                        <div class="row">
+                          <% @frelation.each do |a|%>  
+                            <tr> 
+                                <div class="col-lg-4">
+                                  <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                </div>
+                                <div class="col-lg-8">
+                                  <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                </div>
+                            </tr>
+                          <% end %>
+                          <% @frelation_title.each do |a|%>  
+                            <tr> 
+                                <div class="col-lg-4">
+                                  <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                </div>
+                                <div class="col-lg-8">
+                                  <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                </div>
+                            </tr>
+                          <% end %>
+                          <% @frelation_email.each do |a|%>  
+                            <tr> 
+                                <div class="col-lg-4">
+                                  <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                </div>
+                                <div class="col-lg-8">
+                                  <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                </div>
+                            </tr>
+                          <% end %>
+                        </div>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                 <div class="ibox collapsed">
+                    <div class="ibox-title">
+                        <h5>Third Party</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                    <table class="table borderless">
+                        <div class="row">
+                          <% @ftp_name.each do |a|%>  
+                            <tr> 
+                                <div class="col-lg-4">
+                                  <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                </div>
+                                <div class="col-lg-8">
+                                  <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                </div>
+                            </tr>
+                          <% end %>
+                          <% @ftp_title.each do |a|%>  
+                            <tr> 
+                                <div class="col-lg-4">
+                                  <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                </div>
+                                <div class="col-lg-8">
+                                  <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                </div>
+                            </tr>
+                          <% end %>
+                          <% @ftp_email.each do |a|%>  
+                            <tr> 
+                                <div class="col-lg-4">
+                                  <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                </div>
+                                <div class="col-lg-8">
+                                  <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                </div>
+                            </tr>
+                          <% end %>
+                        </div>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                <div class="ibox collapsed">
+                    <div class="ibox-title">
+                        <h5>Other Details</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                    <table class="table borderless">
+                        <div class="row">
+                          <% @fcs_type.each do |a|%>  
+                            <tr> 
+                                <div class="col-lg-4">
+                                  <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                </div>
+                                <div class="col-lg-8">
+                                  <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                </div>
+                            </tr>
+                          <% end %>
+                          <% @fland_type.each do |a|%>  
+                            <tr> 
+                                <div class="col-lg-4">
+                                  <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                </div>
+                                <div class="col-lg-8">
+                                  <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                </div>
+                            </tr>
+                          <% end %>
+                          <% @fsite_land.each do |a|%>  
+                            <tr> 
+                                <div class="col-lg-4">
+                                  <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                </div>
+                                <div class="col-lg-8">
+                                  <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                </div>
+                            </tr>
+                          <% end %>
+                          <% @find_city.each do |a|%>  
+                            <tr> 
+                                <div class="col-lg-4">
+                                  <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                </div>
+                                <div class="col-lg-8">
+                                  <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                </div>
+                            </tr>
+                          <% end %>
+                          <% @find_land.each do |a|%>  
+                            <tr> 
+                                <div class="col-lg-4">
+                                  <td style="font-size:16px;"><b><%= a.property%></b></td>
+                                </div>
+                                <div class="col-lg-8">
+                                  <td><input type="text" class="form-control" value="<%= a.Value %>"></td>
+                                </div>
+                            </tr>
+                          <% end %>
+                        </div>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+  </div>   
+</div>
+</div>
+
+<% content_for :javascript do %>
+
+<script type="text/javascript">
+
+
+$(function() {
+
+    var updateOutput = function (e) {
+        var list = e.length ? e : $(e.target),
+                output = list.data('output');
+        if (window.JSON) {
+            output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+        } else {
+            output.val('JSON browser support required for this demo.');
+        }
+    };
+    // activate Nestable for list 1
+    $('#nestable').nestable({
+        group: 1
+    }).on('change', updateOutput);
+
+    // activate Nestable for list 2
+    $('#nestable2').nestable({
+        group: 1
+    }).on('change', updateOutput);
+
+    // output initial serialised data
+    updateOutput($('#nestable').data('output', $('#nestable-output')));
+    updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+
+    $('#nestable-menu').on('click', function (e) {
+        var target = $(e.target),
+                action = target.data('action');
+        if (action === 'expand-all') {
+            $('.dd').nestable('expandAll');
+        }
+        if (action === 'collapse-all') {
+            $('.dd').nestable('collapseAll');
+        }
+    });
+
+});
+
+</script>
+
+<% end %>

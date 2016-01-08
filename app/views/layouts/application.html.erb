@@ -3,17 +3,34 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INSPINIA</title>
+    <title>KSA</title>
 
     <!-- Main css styles -->
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-
+    <%- if I18n.locale== :ar %>
+        <%= stylesheet_link_tag    'applicationrtls', media: 'all', 'data-turbolinks-track' => true %>
+        <% else %>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <% end -%>
     <!-- Main javascript files -->
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-
+    <style type="text/css">
+        .borderless {
+            border-bottom:0px !important;
+        }
+        .borderless th, .borderless td {
+            border: 0px !important;
+        }
+        .borderless {
+            border:0px !important;
+        }
+    </style>
 </head>
-<body class="md-skin fixed-nav">
+<%- if I18n.locale== :ar %>
+    <body class="md-skin fixed-nav rtls">
+    <% else %>
+    <body class="md-skin fixed-nav ">
+<% end -%>
     <!-- Wrapper-->
     <div id="wrapper">
         <% if user_signed_in? %>
@@ -35,8 +52,14 @@
             <!-- End page wrapper-->
         <% else %>
             <%= yield %>
+            </br>
             <div class="col-md-4"></div>
-            <div class="col-md-4"><p style="text-align:center;"><%= link_to_unless I18n.locale == :en, "English", locale: :en %> | <%= link_to_unless I18n.locale == :de, "Arabic", locale: :ar %></p></div>
+            <div class="col-md-4">
+            <%- if I18n.locale== :ar %>
+                <p style="text-align:center;"><%= link_to_unless I18n.locale == :en, "English", locale: :en %> | العربية</p>
+            <% else %>  
+                <p style="text-align:center;"> English | <%= link_to_unless I18n.locale == :de, "العربية", locale: :ar %></p>
+            <% end -%></div>
             <div class="col-md-4"></div>
         <% end %>   
     </div>

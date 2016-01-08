@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
        :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable
   protected
-	def confirmation_required?
-	  false
-	end     
+	# def confirmation_required?
+	#   false
+	# end     
 end

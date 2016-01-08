@@ -1,14 +1,62 @@
-<div class="middle-box text-center loginscreen  animated fadeInDown">
+<div class="middle-box text-center loginscreen  animated fadeInDown" >
     <div>
         <div>
-          <%= image_tag "l3.jpg"%>
+          <%= image_tag "loginlogo2.png"%>
         </div>
         <br>
-        <h3>Welcome to KSA</h3>
-        <p>
-            Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
+        <div style="border:1px solid #DCE8E7;">
+        <div style="padding:20px;">
+        <h4 class="">
+          <%- if I18n.locale== :ar %>
+            <span class="">
+              <% @ar_welcome = Language.select("language_property").where("language_id = ? AND controller_name = ? AND page_name = ? AND language_type = ? ", '1','sessions','new.html.erb','ar')%>
+              <% @ar_welcome.each do |ar_welcome|%>
+              <h2><%= ar_welcome.language_property %></h2>
+               <% end %>
+            </span>
+          <% else %>
+            <span class="">
+              <% @en_welcome = Language.select("language_property").where("language_id = ? AND controller_name = ? AND page_name = ? AND language_type = ? ", '1','sessions','new.html.erb','en')%>
+              <% @en_welcome.each do |en_welcome|%>
+              <h2><%= en_welcome.language_property %></h2>
+               <% end %>
+            </span>
+          <% end -%>
+        </h4>
+        <p class="hide">
+            <%- if I18n.locale== :ar %>
+            <span class="">
+              <% @ar_Perfectly = Language.select("language_property").where("language_id = ? AND controller_name = ? AND page_name = ? AND language_type = ? ", '2','sessions','new.html.erb','ar')%>
+              <% @ar_Perfectly.each do |ar_Perfectly|%>
+              <%= ar_Perfectly.language_property %>
+               <% end %>
+            </span>
+          <% else %>
+            <span class="">
+              <% @en_Perfectly = Language.select("language_property").where("language_id = ? AND controller_name = ? AND page_name = ? AND language_type = ? ", '2','sessions','new.html.erb','en')%>
+              <% @en_Perfectly.each do |en_Perfectly|%>
+              <%= en_Perfectly.language_property %>
+               <% end %>
+            </span>
+          <% end -%>
         </p>
-        <p>Login in. To see it in action.</p>
+        <p class="hide">
+           <strong><%- if I18n.locale== :ar %>
+            <span class="">
+              <% @ar_Login = Language.select("language_property").where("language_id = ? AND controller_name = ? AND page_name = ? AND language_type = ? ", '3','sessions','new.html.erb','ar')%>
+              <% @ar_Login.each do |ar_Login|%>
+              <%= ar_Login.language_property %>
+               <% end %>
+            </span>
+          <% else %>
+            <span class="">
+              <% @en_Login = Language.select("language_property").where("language_id = ? AND controller_name = ? AND page_name = ? AND language_type = ? ", '3','sessions','new.html.erb','en')%>
+              <% @en_Login.each do |en_Login|%>
+              <%= en_Login.language_property %>
+               <% end %>
+            </span>
+          <% end -%></strong>        
+        </p>
         <div class="row">
           <div class="col-md-12">
             <% if notice %>
@@ -25,37 +73,106 @@
             <% end %>            
           </div>          
         </div>
+        </br>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|  %>
           <div class="form-group">
-            <%= f.email_field :email,class:'form-control', autofocus: true, placeholder:"Email" ,required:"required"%>
+          <%- if I18n.locale== :ar %>
+          <label class="pull-left">البريد الإلكتروني</label>
+            <%= f.email_field :email,class:'form-control', autofocus: true, placeholder:"" ,required:"required"%>
+          <% else %>  
+           <label class="pull-left">Email</label>
+            <%= f.email_field :email,class:'form-control', autofocus: true, placeholder:"" ,required:"required"%>
+          <% end -%>      
           </div>
 
           <div class="form-group">
-            <%= f.password_field :password,class:'form-control', autocomplete: "off",placeholder:"Password" ,required:"required"%>
+            <%- if I18n.locale== :ar %>
+            <label class="pull-left">الرمز السري</label>
+              <%= f.password_field :password,class:'form-control', autocomplete: "off",placeholder:"" ,required:"required"%>
+            <% else %> 
+            <label class="pull-left">Password</label> 
+              <%= f.password_field :password,class:'form-control', autocomplete: "off",placeholder:"" ,required:"required"%>
+            <% end -%>   
           </div>
-          <div class="pull-right">
-            <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-              <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
-            <% end -%>
-          </div>
-          <% if devise_mapping.rememberable? -%>
-            <div class="form-group pull-left">
-              <%= f.check_box :remember_me %>
-              <%= f.label :remember_me %>
+         <div class="row">
+            <div class="col-md-6">
+              <div class="pull-right">
+                <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                  <%- if I18n.locale== :ar %>
+                    <%= link_to "هل نسيت كلمة المرور ؟", new_password_path(resource_name) %>
+                  <% else %>  
+                    <%= link_to "Forgot password?", new_password_path(resource_name) %>
+                  <% end -%><br />
+                <% end -%>
+              </div>
             </div>
-          <% end -%>
-
-          <div class="actions">
-            <%= f.submit "Log in",class:"btn btn-primary block full-width m-b"%>
+            <div class="col-md-6">
+              <% if devise_mapping.rememberable? -%>
+                  <div class="form-group pull-right">
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :remember_me %>
+                  </div>
+                <% end -%>
+            </div>
+            <div class="col-md-12">
+              <div class="actions">
+                <%- if I18n.locale== :ar %>
+                    <%= f.submit "تسجيل الدخول",class:"btn btn-primary block  full-width m-b"%>
+                  <% else %>  
+                    <%= f.submit "Log in",class:"btn btn-primary block full-width m-b"%>
+                  <% end -%>
+              </div>
           </div>
-        <% end %>
-        <p class="text-muted text-center"><small>Do not have an account?</small></p>
-
-        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-           <a class="btn btn-sm btn-white btn-block" href="<%= url_for :controller => 'registrations', :action => 'new' %>">Create an account</a>
-        <% end -%>
+         </div>
+        <% end %>  
+        <hr>
+        <p class="text-muted text-center">
+        </p>
+        <div class="row">
+          <div class="col-lg-6">
+            <small>
+            <%- if I18n.locale== :ar %>
+              <span class="">
+                <% @ar_Do = Language.select("language_property").where("language_id = ? AND controller_name = ? AND page_name = ? AND language_type = ? ", '4','sessions','new.html.erb','ar')%>
+                <% @ar_Do.each do |ar_Do|%>
+                <%= ar_Do.language_property %>
+                 <% end %>
+              </span>
+            <% else %>
+              <span class="">
+                <% @en_Do = Language.select("language_property").where("language_id = ? AND controller_name = ? AND page_name = ? AND language_type = ? ", '4','sessions','new.html.erb','en')%>
+                <% @en_Do.each do |en_Do|%>
+                <%= en_Do.language_property %>
+                 <% end %>
+              </span>
+            <% end -%>
+          </small>
+          </div>
+          <div class="col-lg-6">
+          <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+             <a class="text-danger" href="<%= url_for :controller => 'registrations', :action => 'new' %>">
+              <%- if I18n.locale== :ar %>
+              <span class="">
+                <% @ar_Create = Language.select("language_property").where("language_id = ? AND controller_name = ? AND page_name = ? AND language_type = ? ", '5','sessions','new.html.erb','ar')%>
+                <% @ar_Create.each do |ar_Create|%>
+                <%= ar_Create.language_property %>
+                 <% end %>
+              </span>
+            <% else %>
+              <span class="">
+                <% @en_Create = Language.select("language_property").where("language_id = ? AND controller_name = ? AND page_name = ? AND language_type = ? ", '5','sessions','new.html.erb','en')%>
+                <% @en_Create.each do |en_Create|%>
+                <%= en_Create.language_property %>
+                 <% end %>
+              </span>
+            <% end -%>
+             </a>
+          <% end -%>
+          </div>
+        </div>
         <br>
         <%= render "devise/shared/links" %>
-
+        </div>
   </div>
+</div>
 </div>

@@ -11,8 +11,8 @@
                             <span class="block m-t-xs">
                                 <strong class="font-bold">
                                 <% if user_signed_in? %>
-                                <%= current_user.name %></strong>
-                                </span> <span class="text-muted text-xs block"><%= current_user.designation %>, INDIA <!--b class="caret"></b--></span>
+                                <%= current_user.name.upcase %></strong>
+                                </span> <span class="text-muted text-xs block"><%= current_user.designation.upcase %> <!--b class="caret"></b--></span>
                             <% end %>
                         </span>
                     </a>
@@ -34,13 +34,19 @@
             </li>
             <li class="<%= 'active' if current_page?('/') %>">
                 <%= link_to "/" do %>
-                <i class="fa fa-laptop"></i> <span class="nav-label">Main page</span>
+                <%- if I18n.locale== :ar %>
+                   <i class="fa fa-laptop"></i> <span class="nav-label">لوحة أجهزة القياس</span>
+                  <% else %>
+                    <i class="fa fa-laptop"></i> <span class="nav-label">Dashboard</span>
+                <% end -%> 
                 <% end %>
             </li>
-            <li class="<%= 'active' if current_page?('/home/minor') %>">
-                <%= link_to "/home/minor" do %>
-                <i class="fa fa-desktop"></i> <span class="nav-label">Minor page</span>
-                <% end %>
+            <li class="<%= 'active' if current_page?('registrations/edit') %>">
+                 <%- if I18n.locale== :ar %>
+                    <%= link_to '<i class="fa fa-desktop"></i> تعديل الملف الشخصي'.html_safe,  edit_user_registration_path %> 
+                  <% else %>
+                    <%= link_to '<i class="fa fa-user"></i> <span class="nav-label">Edit Profile</span>'.html_safe,  edit_user_registration_path %> 
+                <% end -%> 
             </li>
         </ul>
 

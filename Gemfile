@@ -34,11 +34,22 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-passenger', '>= 0.1.1'
 
+  # Remove the following if your app does not use Rails
+  gem 'capistrano-rails'
+
+  # Remove the following if your server does not use RVM
+  gem 'capistrano-rvm'
+end
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+gem 'safe_attributes', :require => 'safe_attributes/base'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'

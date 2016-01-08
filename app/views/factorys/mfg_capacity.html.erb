@@ -1,0 +1,75 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <img alt="image" class="img-responsive" src="<%= image_url 'headerlogo.jpg' %> " height="50px" />
+        <!--  <div class="col-lg-6">
+        <img alt="image" src="<%= image_url 'l3.jpg' %>" style="margin-left:-15px;" />
+        </div>
+        <div class="col-lg-2">
+        <img alt="image" src="<%= image_url 'l2.jpg' %>" style="align:center;"/>
+        </div>
+        <div class="col-lg-4">
+            <img alt="image" src="<%= image_url 'l1.jpg' %>" style="margin-top:15px;margin-left:220px;" />
+        </div>  -->
+        
+        <div class="clearfix"></div>
+         <ol class="breadcrumb">
+            <li>
+                <a href="<%= url_for :controller => 'source_data', :action => 'chart' %>">Dashboard</a>
+        </li>
+        <li>
+             <a href="<%= url_for :controller => 'factorys', :action => 'show' %>">Factory Searcher</a>
+        </li>
+        <li class="active">
+            <strong>Mfg Capacity View</strong>
+        </li>
+    </ol>
+        
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+             <h2>MFG CAPACITY VIEW</h2>
+             <table class="table table-bordered" style="outline:thin solid">
+                <tr>
+                    <th colspan="2">FACTORY_ID :   <%= @mfg %> </th>                    
+                </tr>
+            </table>
+            <% @mfg1.each do |v| %> 
+                <table class="table table-bordered" style="outline:thin solid">
+                    
+                        <tr> 
+                            <th>PK_ID</th>
+                            <td><%= v.PK_ID %> </td>
+                        </tr>
+                         <tr> 
+                            <th>ISIC4_CODE</th>
+                            <td><%= v.ISIC4_Code %> </td>
+                        </tr>
+                         <tr> 
+                            <th>CAPACITY</th>
+                            <td><%= v.Capacity %> </td>
+                        </tr>
+                         <tr> 
+                            <th>UOM</th>
+                            <td><%= v.UOM %> </td>
+                        </tr>
+                         <tr> 
+                            <th>PERIOD_OF_MEASURE</th>
+                            <td><%= v.Period_of_Measure %> </td>
+                        </tr>
+                         <tr> 
+                            <th>LANGUAGE</th>
+                            <td><%= v.Language %> </td>
+                        </tr>
+                        
+                </table>
+               <% end -%>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+ 

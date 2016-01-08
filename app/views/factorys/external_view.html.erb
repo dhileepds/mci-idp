@@ -1,0 +1,107 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <img alt="image" class="img-responsive" src="<%= image_url 'headerlogo.jpg' %> " height="50px" />
+        <!--  <div class="col-lg-6">
+        <img alt="image" src="<%= image_url 'l3.jpg' %>" style="margin-left:-15px;" />
+        </div>
+        <div class="col-lg-2">
+        <img alt="image" src="<%= image_url 'l2.jpg' %>" style="align:center;"/>
+        </div>
+        <div class="col-lg-4">
+            <img alt="image" src="<%= image_url 'l1.jpg' %>" style="margin-top:15px;margin-left:220px;" />
+        </div>  -->
+        
+        <div class="clearfix"></div>
+         <ol class="breadcrumb">
+            <li>
+                <a href="<%= url_for :controller => 'source_data', :action => 'chart' %>">Dashboard</a>
+        </li>
+        <li>
+             <a href="<%= url_for :controller => 'factorys', :action => 'show' %>">Factory Searcher</a>
+        </li>
+        <li class="active">
+            <strong>External View</strong>
+        </li>
+    </ol>
+        
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+            <h2>External View</h2>
+             <table class="table table-bordered" style="border: 1px solid balck;">
+                <tr>
+                    <% @factory_name.each do |f| %> 
+                        <th>FACTORY NAME  </th>
+                        <td><%=f.Factory_Name  %></td>
+                    <% end %>
+                </tr>
+            </table>
+              <% @view_extern.each do |v| %> 
+                <table class="table table-bordered" style="border: 1px solid balck;">
+                    <tr> 
+                        <th>XID_DESCRIPTION</th>
+                        <td><%= v.XID_Description %> </td>
+                    </tr>
+                    <tr> 
+                        <th>SUBMITTING_AGENCY</th>
+                        <td><%= v.Submitting_Agency %> </td>
+                    </tr>                       
+                </table>
+                 <% end %>
+               
+             </div>
+        </div>
+     </div>       
+    </div>
+</div>
+<% content_for :javascript do %>
+
+<script type="text/javascript">
+
+
+$(function() {
+
+    var updateOutput = function (e) {
+        var list = e.length ? e : $(e.target),
+                output = list.data('output');
+        if (window.JSON) {
+            output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+        } else {
+            output.val('JSON browser support required for this demo.');
+        }
+    };
+    // activate Nestable for list 1
+    $('#nestable').nestable({
+        group: 1
+    }).on('change', updateOutput);
+
+    // activate Nestable for list 2
+    $('#nestable2').nestable({
+        group: 1
+    }).on('change', updateOutput);
+
+    // output initial serialised data
+    updateOutput($('#nestable').data('output', $('#nestable-output')));
+    updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+
+    $('#nestable-menu').on('click', function (e) {
+        var target = $(e.target),
+                action = target.data('action');
+        if (action === 'expand-all') {
+            $('.dd').nestable('expandAll');
+        }
+        if (action === 'collapse-all') {
+            $('.dd').nestable('collapseAll');
+        }
+    });
+
+});
+
+</script>
+
+<% end %>
+ 
